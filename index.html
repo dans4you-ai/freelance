@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma Freelance - Tanpa Modal</title>
+    <style>
+        :root {
+            --primary: #0a0a1a;
+            --secondary: #1a1a3a;
+            --accent: #4a1e9e;
+            --text: #ffffff;
+            --highlight: #ff00c8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--highlight), #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, var(--accent), transparent 40%),
+                        radial-gradient(circle at bottom left, var(--highlight), transparent 40%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%234a1e9e' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--highlight), #00ffff, var(--highlight));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 0, 200, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 0, 200, 0.7), 0 0 30px rgba(255, 0, 200, 0.5);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--accent), var(--highlight));
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(10, 10, 26, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(74, 30, 158, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--highlight);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--highlight);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .requirements {
+            padding: 80px 0;
+            background-color: var(--primary);
+        }
+        
+        .requirements-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .requirement-item {
+            background: rgba(26, 26, 58, 0.5);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .requirement-icon {
+            margin-right: 15px;
+            color: var(--highlight);
+            font-size: 1.5rem;
+        }
+        
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            text-align: center;
+        }
+        
+        .contact-info {
+            font-size: 1.8rem;
+            margin: 30px 0;
+            color: var(--highlight);
+            word-break: break-all;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            padding: 30px 0;
+            text-align: center;
+            color: #cccccc;
+            border-top: 1px solid rgba(74, 30, 158, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">ENIGMA FREELANCE</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>FREELANCE TANPA MODAL</h1>
+                <p class="subtitle">Hanya Modal WhatsApp, Mulai Kerja Sekarang!</p>
+                <a href="#contact" class="cta-button">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Keuntungan Bergabung</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="feature-title">Tanpa Modal</h3>
+                    <p>Mulai freelance tanpa perlu mengeluarkan biaya sama sekali. Hanya bermodalkan WhatsApp yang sudah kamu miliki.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Rate Menguntungkan</h3>
+                    <p>Dapatkan rate pembayaran per jam sebesar Rp 15.000. Kerja sesuai waktu luang yang kamu miliki.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Flexible</h3>
+                    <p>Kerja kapan saja dan di mana saja sesuai dengan kesediaan waktumu. Tidak mengganggu aktivitas utama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="requirements">
+        <div class="container">
+            <h2 class="section-title">Syarat Bergabung</h2>
+            <div class="requirements-list">
+                <div class="requirement-item">
+                    <span class="requirement-icon">☑️</span>
+                    <p>Wajib punya WhatsApp</p>
+                </div>
+                
+                <div class="requirement-item">
+                    <span class="requirement-icon">☑️</span>
+                    <p>Minimal WA berumur 2/3 bulan (tidak baru dibuat)</p>
+                </div>
+                
+                <div class="requirement-item">
+                    <span class="requirement-icon">☑️</span>
+                    <p>Jangan pakai WA nokos (nomor kosong)</p>
+                </div>
+                
+                <div class="requirement-item">
+                    <span class="requirement-icon">☑️</span>
+                    <p>Rate pay per jam = 15k</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Bergabung Sekarang</h2>
+            <p class="subtitle">Kirim pesan kepada kami melalui Telegram untuk informasi lebih lanjut</p>
+            <div class="contact-info">t.me/devky88</div>
+            <a href="https://t.me/devky88" class="cta-button">Hubungi via Telegram</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Enigma Freelance. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
