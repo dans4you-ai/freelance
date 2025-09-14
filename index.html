@@ -107,6 +107,24 @@
             width: 100%;
             padding: 40px 0;
         }
+
+        .hero-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
         
         h1 {
             font-size: 3.5rem;
@@ -341,6 +359,11 @@
                 font-size: 1.4rem;
             }
             
+            .hero-logo {
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            
             .subtitle {
                 font-size: 1.2rem;
             }
@@ -375,6 +398,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <!-- Logo di atas teks "FREELANCE TANPA MODAL" -->
+                <img src="https://o.uguu.se/MTRaWDVm.jpg" alt="Prince Dil Freelance" class="hero-logo">
                 <h1>FREELANCE TANPA MODAL</h1>
                 <p class="subtitle">Hanya Modal WhatsApp, Mulai Kerja Sekarang! Dapatkan penghasilan hingga Rp 15.000 per jam hanya dengan menggunakan WhatsApp Anda.</p>
                 <a href="#contact" class="cta-button">Daftar Sekarang</a>
